@@ -1,7 +1,5 @@
 <?php
-
-namespace App\Controller;
-
+namespace App\Controller;           
 use App\Entity\Universite;
 use App\Form\UniversiteType;
 use App\Repository\UniversiteRepository;
