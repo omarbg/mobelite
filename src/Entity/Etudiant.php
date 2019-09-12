@@ -51,6 +51,11 @@ class Etudiant
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $created;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +141,18 @@ class Etudiant
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
 
         return $this;
     }
