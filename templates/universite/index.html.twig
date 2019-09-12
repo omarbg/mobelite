@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Universite index{% endblock %}
+
+{% block body %}
+    <h1>Universite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Logo</th>
+                <th>Created</th>
+                <th>Addres</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for universite in universites %}
+            <tr>
+                <td>{{ universite.id }}</td>
+                <td>{{ universite.name }}</td>
+                <td>{{ universite.logo }}</td>
+                <td>{{ universite.created ? universite.created|date('Y-m-d') : '' }}</td>
+                <td>{{ universite.addres }}</td>
+                <td>
+                    <a href="{{ path('universite_show', {'id': universite.id}) }}">show</a>
+                    <a href="{{ path('universite_edit', {'id': universite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('universite_new') }}">Create new</a>
+{% endblock %}
