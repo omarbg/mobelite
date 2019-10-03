@@ -7,5 +7,13 @@
 
     {{ include('etudiant/_form.html.twig') }}
 
+    <h2>Pointage</h2>
+    {{ form_start(form2) }}
+    {{ form_widget(form2) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form2) }}
+
+    
+    
     <a href="{{ path('etudiant_index') }}">back to list</a>
 {% endblock %}

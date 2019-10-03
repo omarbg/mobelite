@@ -27,12 +27,7 @@ class Cours
      * @ORM\Column(type="text")
      */
     private $description;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $relation;
-
+    
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Classes", inversedBy="cours")
      */
@@ -72,17 +67,7 @@ class Cours
         return $this;
     }
 
-    public function getRelation(): ?string
-    {
-        return $this->relation;
-    }
-
-    public function setRelation(string $relation): self
-    {
-        $this->relation = $relation;
-
-        return $this;
-    }
+   
 
     /**
      * @return Collection|Classes[]

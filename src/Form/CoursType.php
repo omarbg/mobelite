@@ -16,7 +16,7 @@ class CoursType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('classe',EntityType::class,['class' => Classes::class,'choice_label' => 'label'])
+            ->add('classe',EntityType::class,['class' => Classes::class,'choice_label' => 'label','multiple'=>true])
         ;
     }
 

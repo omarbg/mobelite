@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Relation</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,7 +20,7 @@
                 <td>{{ cour.id }}</td>
                 <td>{{ cour.title }}</td>
                 <td>{{ cour.description }}</td>
-                <td>{{ cour.relation }}</td>
+                
                 <td>
                     <a href="{{ path('cours_show', {'id': cour.id}) }}">show</a>
                     <a href="{{ path('cours_edit', {'id': cour.id}) }}">edit</a>

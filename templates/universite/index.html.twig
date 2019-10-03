@@ -3,39 +3,63 @@
 {% block title %}Universite index{% endblock %}
 
 {% block body %}
-    <h1>Universite index</h1>
+     <section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image:url(images/bg_1.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 text-center ftco-animate">
+            <h1 class="mb-4">Kids Are The Best <span>Explorers In The World</span></h1>
+            <p><a href="#" class="btn btn-secondary px-4 py-3 mt-3">Read More</a></p>
+          </div>
+        </div>
+        </div>
+      </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Logo</th>
-                <th>Created</th>
-                <th>Addres</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for universite in universites %}
-            <tr>
-                <td>{{ universite.id }}</td>
-                <td>{{ universite.name }}</td>
-                <td>{{ universite.logo }}</td>
-                <td>{{ universite.created ? universite.created|date('Y-m-d') : '' }}</td>
-                <td>{{ universite.addres }}</td>
-                <td>
-                    <a href="{{ path('universite_show', {'id': universite.id}) }}">show</a>
-                    <a href="{{ path('universite_edit', {'id': universite.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+      <div class="slider-item" style="background-image:url(images/bg_2.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 text-center ftco-animate">
+            <h1 class="mb-4">Perfect Learned<span> For Your Child</span></h1>
+            <p><a href="#" class="btn btn-secondary px-4 py-3 mt-3">Read More</a></p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
 
-    <a href="{{ path('universite_new') }}">Create new</a>
+    <p class='navbar-brand'>Universites</p>
+    <br/>
+             <a href="{{ path('universite_new') }}">Ajouter Université</a>
+
+    <br/>
+            {% set index =  0 %}    
+            {% for universite in universites %}
+                {% if  index is divisible by(6)  %}
+                    <section class="ftco-section">
+			<div class="container">
+				<div class="row">
+                {% endif %}
+                
+                <div class="col-md-6 course d-lg-flex ftco-animate">
+
+                    {% if universite.logo  is not null%}  {% set logo = 'cvs/' ~ universite.logo %}  {% else %} {% set logo = 'images/course-6.jpg' %} {% endif %}
+						<div class="img" style="background-image: url({{logo}});"></div>
+						<div class="text bg-light p-4">
+							<h3><a href="{{ path('universite_show', {'id': universite.id}) }}">{{ universite.name }}</a></h3>
+							<p class="subheading"><span>Class time:</span> 9:00am - 10am</p>
+							<p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+                                                                            <a href="{{ path('universite_edit', {'id': universite.id}) }}">edit</a>
+
+						</div>
+					</div>
+                
+                {% set index =  index + 1 %}    
+                {% if  index is divisible by(6)  %}
+                    </div>
+			</div>
+		</section>
+                {% endif %}                               
+            {% endfor%}        
 {% endblock %}

@@ -35,6 +35,15 @@
                 <th>Email</th>
                 <td>{{ etudiant.email }}</td>
             </tr>
+            
+            <tr>
+                <th>Cv</th>
+                <td>
+                    
+                    <a href="{{ asset('cvs/' ~ etudiant.cv) }}">View CV (PDF)</a>
+
+                </td>
+            </tr>
         </tbody>
     </table>
 

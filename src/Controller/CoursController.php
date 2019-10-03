@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Cours;
 use App\Form\CoursType;
 use App\Repository\CoursRepository;
+use App\Repository\ClassesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,14 +29,14 @@ class CoursController extends AbstractController
     /**
      * @Route("/new", name="cours_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,ClassesRepository $clasRepository): Response
     {
         $cour = new Cours();
-        $form = $this->createForm(CoursType::class, $cour);
+        $form = $this->createForm(CoursType::class, $cour);        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();            
             $entityManager->persist($cour);
             $entityManager->flush();
 

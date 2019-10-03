@@ -6,7 +6,7 @@ use App\Entity\Universite;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 class UniversiteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -16,6 +16,8 @@ class UniversiteType extends AbstractType
             ->add('logo')
             ->add('created')
             ->add('addres')
+           ->add('logo', FileType::class, ['label' => 'Logo (image)'])
+     
         ;
     }
 

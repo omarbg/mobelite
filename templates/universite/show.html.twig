@@ -27,6 +27,20 @@
                 <th>Addres</th>
                 <td>{{ universite.addres }}</td>
             </tr>
+            <tr>
+                <th>Classes</th>
+                <td>
+{#                    {{ dump(universite) }}#}
+
+                 {#   {% if universite.classes|length >0  %}
+                {% for class in universite.classes %}
+                {{dump(class)}}
+                {% endfor %}
+                {% endif%}
+                #}
+                </td>
+            </tr>
+            
         </tbody>
     </table>
 

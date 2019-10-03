@@ -7,9 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\FileUploader;
 
 /**
- * @Route("/universite")
+ * @Route("/")
  */
 class UniversiteController extends AbstractController
 {
@@ -26,7 +27,7 @@ class UniversiteController extends AbstractController
     /**
      * @Route("/new", name="universite_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,FileUploader $fileuploader): Response
     {
         $universite = new Universite();
         $form = $this->createForm(UniversiteType::class, $universite);
@@ -34,6 +35,13 @@ class UniversiteController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            
+            $file = $universite->getLogo();
+
+            $fileName = $fileuploader->upload($file);
+
+            $universite->setLogo($fileName);
+            
             $entityManager->persist($universite);
             $entityManager->flush();
 
